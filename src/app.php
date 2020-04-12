@@ -46,27 +46,26 @@ function getRate($currency)
 
 function getBin($row)
 {
-    $separateByComma = explode(",", $row);
-    return trim(extractValueFromColonSeparatedString($separateByComma[0]));
+    $data = json_decode($row);
+    return $data->bin;
 }
 
 function getAmount($row)
 {
-    $separateByComma = explode(",", $row);
-    return trim(extractValueFromColonSeparatedString($separateByComma[1]));
+    $data = json_decode($row);
+    return $data->amount;
 }
 
 function getCurrency($row)
 {
-    $separateByComma = explode(",", $row);
-    $separateByColon = explode(':', $separateByComma[2]);
-    return trim($separateByColon[1], '"}');
+    $data = json_decode($row);
+    return $data->currency;
 }
 
-function extractValueFromColonSeparatedString($input) {
-    $separateByColon = explode(':', $input);
-    return trim($separateByColon[1], '"');
-}
+// function extractValueFromColonSeparatedString($input) {
+//     $separateByColon = explode(':', $input);
+//     return trim($separateByColon[1], '"');
+// }
 
 function isEu($country)
 {
