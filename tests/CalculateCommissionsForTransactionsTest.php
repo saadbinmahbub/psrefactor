@@ -12,13 +12,11 @@ final class CalculateCommissionsForTransactionsTest extends TestCase
 
     private function constructDummyData()
     {
-        $format = '{"bin":"%s","amount":"%s","currency":"%s"}';
-        return sprintf(
-            $format,
-            self::CHECK_BIN,
-            self::CHECK_AMOUNT,
-            self::CHECK_CURRENCY
-        );
+        $data = new \stdClass();
+        $data->bin = self::CHECK_BIN;
+        $data->amount = self::CHECK_AMOUNT;
+        $data->currency = self::CHECK_CURRENCY;
+        return json_encode($data);
     }
 
     public function test_is_eu_true()
