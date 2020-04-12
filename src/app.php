@@ -41,6 +41,7 @@ function getRate($currency)
 {
     global $latestExchangeRatesURL;
     $rateResults = file_get_contents($latestExchangeRatesURL);
+    if($currency == 'EUR') return 1;
     return json_decode($rateResults, true)['rates'][$currency];
 }
 
